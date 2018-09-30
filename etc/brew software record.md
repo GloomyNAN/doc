@@ -14,7 +14,7 @@ go python3
 telnet tig tree htop wget
 
 # Others
-node docker
+node docker git-lfs
 
 # IOS 
 carthage - SnaKit依赖
@@ -28,5 +28,6 @@ cask
 - visual-studio-code
 - phpstorm
 - ngrok-反向代理
+- vagrant
 
 

@@ -19,4 +19,11 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 ```
 
+### 手册查看
+
+```
+godoc
+# 开启本地http站点
+ godoc -http=:8080
+```
 

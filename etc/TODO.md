@@ -25,3 +25,5 @@ swoole4.0特性
 php7.3特性 gc算法的优化 hrtime heredoc
 
 
+https://www.jianshu.com/p/3a3db0359bc7
+

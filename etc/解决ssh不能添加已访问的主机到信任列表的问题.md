@@ -2,12 +2,11 @@
 title: 解决ssh不能添加已访问的主机到信任列表的问题(Failed to add the host to the list of known hosts) .
 ---
 
-最近买了一台Mac book pro 价值观完全修改了哦，然后就会发现使用出现各种问题，今天合并代码发现又是.ssh文件作祟，转发一下解决方案，记录记录。
-
+https://www.awaimai.com/2203.html
 
 在ssh访问一个服务器的时候第一次会提示签名验证，只要同意之后就会将这个host添加到~/.ssh中的known_hosts中，以后再连接就不会再出现提示了。
    原来在ubuntu和freebsd下都没有这个问题。在Gentoo中就有点问题。今天解决了一下，在gentoo-user的mail list中找到了答案。
-  正常的情况应该是这样的：
+正常的情况应该是这样的：
 
 
 ```
@@ -19,7 +18,6 @@ Warning: Permanently added 'xxx.xxx.com,218.xxx.xxx.xxx' (RSA) to the list of kn
 rory@xxx.xxx.com's password:  
 ```
 可是Gentoo中每次都出现:
-
 
 ```
 rory@gentoo ~ $ ssh xxx.xxx.com
