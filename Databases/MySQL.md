@@ -3,7 +3,7 @@ title: 《MySQL必知必会》笔记
 ---
 
 
-## 第三章
+## 第三章 使用MySQL
 
 ```SQL
 use <table_name>;
@@ -20,7 +20,7 @@ show warnings;
 ```
 tips: `\g`结尾或`;`
 
-## 第九章
+## 第九章 用正则表达式进行搜索
 
 ```SQL
 regexp -- 正则表达式
@@ -35,14 +35,312 @@ regexp '[\\.]'
 select <table_name> regexp '[0-9]';
 ```
 
-### 第十五章
+![](media/15414005161984.jpg)
+![](media/15414005369525.jpg)
+![](media/15414005532923.jpg)
+
+![](media/15414005604667.jpg)
+
+
+```SQL
+SELECT prod_name
+FROM products
+WHERE prod_name REGEXP '\\([0-9] sticks?\\)'
+ORDER BY prod_name;
+```
+![](media/15414006510709.jpg)
+![](media/15414006818244.jpg)
+![](media/15414007036747.jpg)
+![](media/15414007281160.jpg)
+
+### 第十一章 使用函数处理
+
+![](media/15414007844350.jpg)
+![](media/15414007947442.jpg)
+![](media/15414008268263.jpg)
+
+### 第十二章 聚合函数
+
+![](media/15414008426028.jpg)
+
+
+
+### 第十五章 联结表
 
 inner join
 内连接，等值链接，默认方式
 
 left /right out join 外链接
 
+
+### 第十七章组合查询
+
+多个where和单独操作时间相同，多个where条件语句相当于字句都是一个select语句一个组合查询；
+
+**union 过滤重复的行，union all不过滤重复**
+
+union 和where一样，只能在最后一条select后有一个order by字句,不能存在分别排序；
+
 ```SQL
+-- union
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE prod_price <= 5
+UNION
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE vend_id IN (1001,1002);
+```
+
+### 第十八章 理解全文本搜索
+
+mysiam支持全文搜索，innodb不支持；
+
+>为了进行全文本搜索，必须索引被搜索的列，而且要随着数据的改变不断地重新索引。在对表列进行适当设计后，MySQL会自动进行所有的索引和重新索引。
+在索引之后，SELECT 可与Match() 和Against() 一起使用以实际执行搜索
+
+**启用全文本搜索支持**
+
+```SQL
+CREATE TABLE productnotes
+(
+  note_id    int           NOT NULL AUTO_INCREMENT,
+  prod_id    char(10)      NOT NULL,
+  note_date datetime       NOT NULL,
+  note_text  text          NULL ,
+  PRIMARY KEY(note_id),
+  FULLTEXT(note_text) -- 搜索字段
+) ENGINE=MyISAM;
+```
+
+>定以后MySQL自动维护该索引
+
+>不要在导入数据时使用FULLTEXT 更新索引要花时间，虽然不是很多，但毕竟要花时间。如果正在导入数据到一个新表，此时不应该启用FULLTEXT 索引。应该首先导入所有数据，然后再修改表，定义FULLTEXT 。这样有助于更快地导入数据（而且使索引数据的总时间小于在导入每行时分别进行索引所需的总时间）。
+
+```SQL
+-- 在索引之后，使用两个函数Match() 和Against() 执行全文本搜索，其中Match() 指定被搜索的列，Against() 指定要使用的搜索表达式。
+
+SELECT note_text
+FROM productnotes
+WHERE Match(note_text) Against('rabbit');
+```
+
+>使用完整的Match() 说明 传递给Match() 的值必须与FULLTEXT() 定义中的相同。如果指定多个列，则必须列出它们（而且次序正确）。
+>搜索不区分大小写 除非使用BINARY 方式（本章中没有介绍），否则全文本搜索不区分大小写。
+
+搜索结果根据优先级排序
+
+#### 布尔文本搜索
+
+> 即使没有FULLTEXT 索引也可以使用 布尔方式不同于迄今为止使用的全文本搜索语法的地方在于，即使没有定义FULLTEXT 索引，也可以使用它。但这是一种非常缓慢的操作（其性能将随着数据量的增加而降低）。
+
+
+```sql
+SELECT note_text
+FROM productnotes
+WHERE Match(note_text) Against('heavy' IN BOOLEAN MODE);
+```
+![](media/15414011055067.jpg)
+
+![](media/15414011225462.jpg)
+
+![](media/15414012083129.jpg)
+
+### 第十九章 
+
+### 第二十五章  触发器
+
+- 触发器在每个表中唯一
+- 每张表最多六个触发器 insert、update和delete的前后
+- 单已出发起不能与多个事件或多个表关联
+- 触发器失败不执行SQL操作
+
+insert-new 触发器临时表
+delete-old 触发器只读变量（删除订单前将订单数据存入archive_orders）
+update-触发器的虚拟表old，访问之前的值（只读），new表为新的值
+
+
+```SQL
+-- 创建触发器
+CREATE TRIGGER <tigger name> after insert <table_name> for each row <actions> ;
+-- 例子：每次插入显示文本
+CREATE TRIGGER newproduct after insert products for each row select 'Product added' ;
+
+-- 删除触发器,触发器无更新，只能删除重建
+drop trigger <name>;
+
+```
+
+### 第二十六章 事务
+
+- 类似批处理机制，InnoDB支持,关键词commit 、rollback、transaction、savepoint
+- 不能退回select,create,drop操作
+- 一般的SQL语句是隐含commit,事务需要明确提交
+- 部分退回需要保留点（savepoint）
+- mysql链接可以设置是否自动提交更改`SET autocommit=0;`
+
+
+```SQL
+start transaction
+
+// example:
+SELECT * FROM ordertotals;
+START TRANSACTION;
+DELETE FROM ordertotals;
+SELECT * FROM ordertotals;
+ROLLBACK;
+SELECT * FROM ordertotals;
+
+savepoint <point-name>;
+rollback to <point-name>;
+
+```
+
+### 第二十七章 全球化和本地化
+
+>校对为不同语言字符串的排序顺序
+
+- 字符集、编码、校对
+- 字符集区分大小写由_cs表示
+- 不区分大小写由_ci表示
+- 如未指定校对，则使用字符集默认的校对,如`SHOW CHARACTER SET`显示
+- 
+
+```SQL
+-- 查看字符集
+SHOW CHARACTER SET;
+-- 查看可用校对列表以及字符集
+SHOW COLLATION;
+
+-- 系统字符集和校对
+SHOW VARIABLES LIKE 'character%';
+SHOW VARIABLES LIKE 'collation%';
+
+-- 建表制定字符集
+CREATE TABLE mytable
+(
+   columnn1   INT,
+   columnn2   VARCHAR(10)
+) DEFAULT CHARACTER SET hebrew
+  COLLATE hebrew_general_ci;
+  
+-- 设置字段字符集
+CREATE TABLE mytable
+(
+   columnn1   INT,
+   columnn2   VARCHAR(10),
+   column3    VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_general_ci SET latin1 COLLATE latin1_general_ci
+) DEFAULT CHARACTER SET hebrew
+  COLLATE hebrew_general_ci;
+  
+ -- 设置select语句字符集，对排序起作用
+ 
+ SELECT * FROM customers
+ORDER BY lastname, firstname COLLATE latin1_general_cs;
+
+```
+
+>SELECT 的其他COLLATE 子句 除了这里看到的在ORDER BY 子句中使用以外，COLLATE 还可以用于GROUP BY 、HAVING 、聚集函数、别名等。
+最后，值得注意的是，如果绝对需要，串可以在字符集之间进行转换。为此，使用Cast() 或Convert() 函数。
+
+### 第二十八章 安全管理
+
+创建用户：
+
+- 关键词：create user,grant,insert grant;
+,直接插入user表；
+- 用户定义为user@Host,如无主机名默认为"%";
+
+权限
+
+- REVOKE 降权（撤销的权限必须存在，否则报错）
+- grant 加权
+- 访问控制：
+1. 整个服务器，grant all 和 revoke all;
+2. 整个数据库 on database.*,
+3. 特定的标表，on datebase.table;
+4. 特定的列；
+5. 特定的存储过程；
+
+![](media/15413952805891.jpg)
+![](media/15413952902910.jpg)
+
+
+```SQL
+-- 创建用户 IDENTIFIED BY明文转加密
+CREATE USER ben IDENTIFIED BY 'p@$$w0rd';
+-- 改名
+rename user <username> to <new-username>;
+drop user <username>;
+
+-- 展示用户权限
+SHOW GRANTS FOR <username>;
+
+-- 加权限
+GRANT SELECT ON <tablename>.* TO <user>;
+
+-- 修改密码,不指定用户为修改自己
+SET PASSWORD FOR <user> = Password('<new-pass>');
+
+``` 
+
+### 第二十九章 数据库维护
+
+备份方式
+
+- mysqldump
+- mysqlhotcopy(并非所有引擎都支持)
+- backup table / select into outfile 可以使用restore tabel复原
+
+>首先刷新未写数据 为了保证所有数据被写到磁盘（包括索引数据），可能需要在进行备份前使用FLUSH TABLES 语句。
+
+```SQL
+-- 检查表键是否正确
+analyze tabel <table>
+
+-- CHECK TABLE 用来针对许多问题对表进行检查。在MyISAM 表上还对索引进行检查。CHECK TABLE 支持一系列的用于MyISAM 表的方式。CHANGED 检查自最后一次检查以来改动过的表。EXTENDED 执行最彻底的检查，FAST 只检查未正常关闭的表，MEDIUM 检查所有被删除的链接并进行键检验，QUICK 只进行快速扫描。如下所示，CHECK TABLE 发现和修复问题：
+
+CHECK TABLE orders, orderitems;
+ 
+ -- 修复表
+ repair table
+ 
+ -- 从一个表删除大量数据
+ optimize table
+```
+#### 诊断启动问题
+
+--help 显示帮助——一个选项列表；
+--safe-mode 装载减去某些最佳配置的服务器；
+--verbose 显示全文本消息（为获得更详细的帮助消息与--help 联合使用）；
+日志文件
+
+#### 日志
+
+- 错误日志。它包含启动和关闭问题以及任意关键错误的细节。此日志通常名为hostname.err ，位于data 目录中。此日志名可用--log-error 命令行选项更改。
+- 查询日志。它记录所有MySQL活动，在诊断问题时非常有用。此日志文件可能会很快地变得非常大，因此不应该长期使用它。此日志通常名为hostname.log ，位于data 目录中。此名字可以用--log 命令行选项更改。
+- 二进制日志。它记录更新过数据（或者可能更新过数据）的所有语句。此日志通常名为hostname-bin ，位于data 目录内。此名字可以用--log-bin 命令行选项更改。注意，这个日志文件是MySQL 5中添加的，以前的MySQL版本中使用的是更新日志。
+- 缓慢查询日志。顾名思义，此日志记录执行缓慢的任何查询。这个日志在确定数据库何处需要优化很有用。此日志通常名为hostname-slow.log ，位于data 目录中。此名字可以用--log-slow-queries 命令行选项更改。
+
+在使用日志时，可用FLUSH LOGS 语句来刷新和重新开始所有日志文件。
+
+### 第三十章 改善性能
+
+1. 存储过程比一条一条执行的快；
+2. 有的操作（包括INSERT ）支持一个可选的DELAYED 关键字，如果使用它，将把控制立即返回给调用程序，并且一旦有可能就实际执行该操作
+3. 在导入数据时，应该关闭自动提交。你可能还想删除索引（包括FULLTEXT 索引），然后在导入完成后再重建它们。
+4. 必须索引数据库表以改善数据检索的性能。确定索引什么不是一件微不足道的任务，需要分析使用的SELECT 语句以找出重复的WHERE 和ORDER BY 子句。如果一个简单的WHERE 子句返回结果所花的时间太长，则可以断定其中使用的列（或几个列）就是需要索引的对象。
+5. 索引改善数据检索的性能，但损害数据插入、删除和更新的性能。如果你有一些表，它们收集数据且不经常被搜索，则在有必要之前不要索引它们。（索引可根据需要添加和删除。）
+6. LIKE 很慢。一般来说，最好是使用FULLTEXT 而不是LIKE 。
+
+
+```SQL
+-- 查看当前设置
+SHOW VARIABLES
+SHOW STATUS;
+
+-- 显示所有活动进程，kill命令终结
+show process list;
 
 ```
 
@@ -73,9 +371,9 @@ not
 like -- %多个字符 _单个字符 通配符搜索花费时间长
 
 concat -- 拼接字段
-
+explain -- 分析SQL语句
 as
-countt -- *包含空值 column 有值统计
+count -- *包含空值 column 有值统计
 
 ```
 
@@ -107,6 +405,120 @@ select <column> from <table> where year(date) = 2005 and month(date) = 9;
 >select子查询顺序为由内至外；
 
 
+### 语句样例
+
+1、 更新字段
+
+```sql
+ALTER TABLE tablename
+(
+    ADD     column          datatype  [NULL|NOT NULL]  [CONSTRAINTS],
+    CHANGE  column columns  datatype  [NULL|NOT NULL]  [CONSTRAINTS],
+    DROP    column,
+    ...
+);
+```
+
+2、索引
+
+```CREATE INDEX indexname
+ON tablename (column [ASC|DESC], ...);
+```
+
+3、 存储过程
+
+
+```SQL
+CREATE PROCEDURE procedurename( [parameters] )
+BEGIN
+...
+END;
+```
+
+4、 创建表
+
+
+```SQL
+CREATE TABLE tablename
+(
+       column    datatype    [NULL|NOT NULL]    [CONSTRAINTS],
+       column    datatype    [NULL|NOT NULL]    [CONSTRAINTS],
+       ...
+);
+```
+
+5、 添加用户
+
+
+```SQL
+CREATE USER username[@hostname]
+[IDENTIFIED BY [PASSWORD] 'password'];
+```
+
+6、 添加视图
+
+
+```SQL
+CREATE [OR REPLACE] VIEW viewname
+AS
+SELECT ...;
+```
+
+7、 删除表一行或多行
+
+
+```SQL
+DELETE FROM tablename
+[WHERE ...];
+”
+```
+
+8、 永久删除数据库对象，表 视图 索引等
+
+
+```SQL
+DROP DATABASE|INDEX|PROCEDURE|TABLE|TRIGGER|USER|VIEW
+    itemname;
+```
+
+
+``` sql
+-- insert
+DROP DATABASE|INDEX|PROCEDURE|TABLE|TRIGGER|USER|VIEW
+    itemname;
+
+-- rollback
+ROLLBACK [ TO savepointname];
+
+-- savepoint
+SAVEPOINT sp1;
+
+-- select
+SELECT columnname, ...
+FROM tablename, ...
+[WHERE ...]
+[UNION ...]
+[GROUP BY ...]
+[HAVING ...]
+[ORDER BY ...];
+
+-- 事务
+START TRANSACTION;
+
+-- update
+UPDATE tablename
+SET columname = value, ...
+[WHERE ...];
+```
+
+### 数据类型
+
+![](media/15413975672068.jpg)
+![](media/15413976114746.jpg)
+![](media/15413976344073.jpg)
+![](media/15413976595125.jpg)
+![](media/15413977417243.jpg)
+
 ### 知识点记录
 
 - [ ] MySQL数据类型
@@ -124,4 +536,8 @@ select <column> from <table> where year(date) = 2005 and month(date) = 9;
 - [ ] 视图场景
 - [ ] 视图、存储过程区别
 - [ ] 函数
+
+
+
+
 
