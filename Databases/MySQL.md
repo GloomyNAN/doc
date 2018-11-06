@@ -253,6 +253,103 @@ deop view viewname;
 
 ### 第二十三章  使用存储过程
 
+#### 理由
+
+- 封装SQL，简化操作
+- 保证数据完整性，使用代码相同
+- 简化数据库变动管理，直接对接存储过程
+- 提高性能，存储过程比单条SQL执行快
+- 单个请求的SQL元素和特性，存储过程更灵活
+
+
+```SQL
+-- call调用 mysql所有变量以@开头
+CALL productpricing(@pricelow,
+                    @pricehigh,
+                    @priceaverage);
+                    
+
+-- 创建存储过程,存储过程代码位于BEGIN 和END之间
+CREATE PROCEDURE productpricing()
+BEGIN
+   SELECT Avg(prod_price) AS priceaverage
+   FROM products;
+END;      
+
+-- mysql 命令行客户机的分隔符 如果你使用的是mysql 命令行实用程序，应该仔细阅读此说明。
+-- 默认的MySQL语句分隔符为;（正如你已经在迄今为止所使用的MySQL语句中所看到的那样）。mysql 命令行实用程序也使用;作为语句分隔符。如果命令行实用程序要解释存储过程自身内的;字符，则它们最终不会成为存储过程的成分，这会使存储过程中的SQL出现句法错误。
+-- 解决办法是临时改变命令使用程序的语句分隔符
+
+ DELIMITER //
+
+  CREATE PROCEDURE productpricing()
+  BEGIN
+     SELECT Avg(prod_price) AS priceaverage
+     FROM products;
+  END //
+
+  DELIMITER ;
+  
+  -- 删除,如果不存在会产生错误，可加IF EXISTS
+  DROP PROCEDURE name;
+```
+
+#### 参数和变量
+
+IN 传出参数
+OUT 指返回值
+INOUT 传入传出参数
+
+### 建立智能存储过程
+
+```SQL
+-- example
+-- Name: ordertotal
+-- Parameters: onumber = order number
+--             taxable = 0 if not taxable, 1 if taxable
+--             ototal = order total variable
+
+CREATE PROCEDURE ordertotal(
+   IN onumber INT,
+   IN taxable BOOLEAN,
+   OUT ototal DECIMAL(8,2)
+) COMMENT 'Obtain order total, optionally adding tax'
+BEGIN
+
+   -- Declare variable for total
+   DECLARE total DECIMAL(8,2);
+   -- Declare tax percentage
+   DECLARE taxrate INT DEFAULT 6;
+
+   -- Get the order total
+   SELECT Sum(item_price*quantity)
+   FROM orderitems
+   WHERE order_num = onumber
+   INTO total;
+
+   -- Is this taxable?
+   IF taxable THEN
+      -- Yes, so add taxrate to the total
+      SELECT total+(total/100*taxrate) INTO total;
+   END IF;
+
+   -- And finally, save to out variable
+   SELECT total INTO ototal;
+
+END;
+```
+
+#### 检查存储过程
+
+
+```SQL
+
+-- 查看SQL语句
+SHOW CREATE PROCEDURE  <name>;
+-- 李处所有存储过程，like过滤指定
+SHOW PROCEDURE STATUS like 'name';
+```
+
 ### 第二十四章  使用游标coursor
 
 检索出的数据进行前进或后退多行，主要用于交互式应用滚动数据；
