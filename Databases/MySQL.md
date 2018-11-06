@@ -146,7 +146,106 @@ WHERE Match(note_text) Against('heavy' IN BOOLEAN MODE);
 
 ![](media/15414012083129.jpg)
 
-### 第十九章 
+### 第十九章 插入数据
+
+### 第二十章 更新和删除数据
+
+### 第二十一章  创建和操纵表
+
+### 第二十二章  使用视图
+
+#### 使用的理由：
+
+- 重用SQL语句。
+- 简化负责的SQL操作
+- 使用表的组成部分而不是这个表
+- 保护数据
+- 格式化数据
+
+复杂的视图或嵌套的视图会使性能下降的很厉害，应测试后使用
+
+#### 规则和限制
+
+- 命名唯一
+- 数量无限制
+- 可以嵌套
+- order by可以在视图中，如果select中也有order by将覆盖视图中的
+- 不能索引，也不能有关联的触发器或默认值
+
+
+```SQL
+create view
+-- 查看创建语句
+show create view viewname;
+deop view viewname;
+
+-- 更新可以先drop再create,也可以create or replace view.
+```
+
+### 第二十三章  使用存储过程
+
+### 第二十四章  使用游标coursor
+
+检索出的数据进行前进或后退多行，主要用于交互式应用滚动数据；
+
+
+```SQL
+-- 创建游标
+CREATE PROCEDURE processorders()
+BEGIN
+   DECLARE ordernumbers CURSOR --declare关键字
+   FOR
+   SELECT ordernum FROM orders;
+END;
+
+-- 打开游标
+OPEN ordernumbers;
+
+-- 关闭游标
+-- 隐含关闭，如果不明确关闭游标，则MySQL会在到达END语句时自动关闭
+CLOSE ordernumbers；
+```
+#### 数据游标
+
+游标打开后可以使用FETCH语句访问每一行
+
+
+```SQL
+CREATE PROCEDURE processorders()
+BEGIN
+
+   -- Declare local variables
+   DECLARE done BOOLEAN DEFAULT 0;
+   DECLARE o INT;
+
+   -- Declare the cursor
+   DECLARE ordernumbers CURSOR
+   FOR
+   SELECT order_num FROM orders;
+
+   -- Declare continue handler
+   DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done=1;
+
+   -- Open the cursor
+   OPEN ordernumbers;
+
+   -- Loop through all rows
+   REPEAT
+
+      -- Get order number
+      FETCH ordernumbers INTO o;
+
+   -- End of loop
+   UNTIL done END REPEAT;
+    -- Close the cursor
+   CLOSE ordernumbers;
+
+END;
+```
+
+>DECLARE 语句的次序 DECLARE 语句的发布存在特定的次序。用DECLARE 语句定义的局部变量必须在定义任意游标或句柄之前定义，而句柄必须在游标之后定义。不遵守此顺序将产生错误消息。
+
+>重复或循环？ 除这里使用的REPEAT 语句外，MySQL还支持循环语句，它可用来重复执行代码，直到使用LEAVE 语句手动退出为止。通常REPEAT 语句的语法使它更适合于对游标进行循环
 
 ### 第二十五章  触发器
 
