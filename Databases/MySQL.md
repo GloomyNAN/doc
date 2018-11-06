@@ -148,6 +148,46 @@ WHERE Match(note_text) Against('heavy' IN BOOLEAN MODE);
 
 ### 第十九章 插入数据
 
+>总是使用列的列表 一般不要使用没有明确给出列的列表的INSERT 语句。使用列的列表能使SQL代码继续发挥作用，即使表结构发生了变化。
+
+>仔细地给出值 不管使用哪种INSERT 语法，都必须给出VALUES 的正确数目。如果不提供列名，则必须给每个表列提供一个值。如果提供列名，则必须对每个列出的列给出一个值。如果不这样，将产生一条错误消息，相应的行插入不成功。
+**省略列需要可以为空或者有默认值**
+
+#### 提高性能
+
+提高整体性能 数据库经常被多个客户访问，对处理什么请求以及用什么次序处理进行管理是MySQL的任务。INSERT 操作可能很耗时（特别是有很多索引需要更新时），而且它可能降低等待处理的SELECT 语句的性能。
+如果数据检索是最重要的（通常是这样），则你可以通过在`INSERT`和`INTO`之间添加关键字`LOW_PRIORITY`，指示MySQL降低INSERT 语句的优先级，如下所示：
+ ` INSERT LOW_PRIORITY INTO`;
+ 也适用于update和delete操作；
+ 
+**insert多条比单条处理速度快** 
+
+#### 导入查询结果
+
+INSERT SELECT 中的列名 为简单起见，这个例子在INSERT 和SELECT 语句中使用了相同的列名。但是，不一定要求列名匹配。事实上，MySQL甚至不关心SELECT 返回的列名。它使用的是列的位置，因此SELECT 中的第一列（不管其列名）将用来填充表列中指定的第一个列，第二列将用来填充表列中指定的第二个列，如此等等。这对于从使用不同列名的表中导入数据是非常有用的。
+
+```SQL
+INSERT INTO customers(cust_id,
+    cust_contact,
+    cust_email,
+    cust_name,
+    cust_address,
+    cust_city,
+    cust_state,
+    cust_zip,
+    cust_country)
+SELECT cust_id,
+    cust_contact,
+    cust_email,
+    cust_name,
+    cust_address,
+    cust_city,
+    cust_state,
+    cust_zip,
+    cust_country
+FROM custnew;
+```
+
 ### 第二十章 更新和删除数据
 
 ### 第二十一章  创建和操纵表
@@ -205,6 +245,7 @@ OPEN ordernumbers;
 -- 隐含关闭，如果不明确关闭游标，则MySQL会在到达END语句时自动关闭
 CLOSE ordernumbers；
 ```
+
 #### 数据游标
 
 游标打开后可以使用FETCH语句访问每一行
