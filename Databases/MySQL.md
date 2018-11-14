@@ -35,11 +35,11 @@ regexp '[\\.]'
 select <table_name> regexp '[0-9]';
 ```
 
-![](media/15414005161984.jpg)
-![](media/15414005369525.jpg)
-![](media/15414005532923.jpg)
+{% asset_img 15414005161984%}
+{% asset_img 15414005369525%}
+{% asset_img 15414005532923%}
 
-![](media/15414005604667.jpg)
+{% asset_img 15414005604667%}
 
 
 ```SQL
@@ -48,20 +48,20 @@ FROM products
 WHERE prod_name REGEXP '\\([0-9] sticks?\\)'
 ORDER BY prod_name;
 ```
-![](media/15414006510709.jpg)
-![](media/15414006818244.jpg)
-![](media/15414007036747.jpg)
-![](media/15414007281160.jpg)
+{% asset_img 15414006510709%}
+{% asset_img 15414006818244%}
+{% asset_img 15414007036747%}
+{% asset_img 15414007281160%}
 
 ### 第十一章 使用函数处理
 
-![](media/15414007844350.jpg)
-![](media/15414007947442.jpg)
-![](media/15414008268263.jpg)
+{% asset_img 15414007844350%}
+{% asset_img 15414007947442%}
+{% asset_img 15414008268263%}
 
 ### 第十二章 聚合函数
 
-![](media/15414008426028.jpg)
+{% asset_img 15414008426028%}
 
 
 
@@ -140,11 +140,11 @@ SELECT note_text
 FROM productnotes
 WHERE Match(note_text) Against('heavy' IN BOOLEAN MODE);
 ```
-![](media/15414011055067.jpg)
 
-![](media/15414011225462.jpg)
+{% asset_img 15414011055067.jpg%}
+{% asset_img 15414011225462.jpg%}
+{% asset_img 15414012083129.jpg%}
 
-![](media/15414012083129.jpg)
 
 ### 第十九章 插入数据
 
@@ -528,9 +528,8 @@ ORDER BY lastname, firstname COLLATE latin1_general_cs;
 4. 特定的列；
 5. 特定的存储过程；
 
-![](media/15413952805891.jpg)
-![](media/15413952902910.jpg)
-
+{% asset_img 15413952805891.jpg %}
+{% asset_img 15413952902910.jpg %}
 
 ```SQL
 -- 创建用户 IDENTIFIED BY明文转加密
@@ -779,11 +778,11 @@ SET columname = value, ...
 
 ### 数据类型
 
-![](media/15413975672068.jpg)
-![](media/15413976114746.jpg)
-![](media/15413976344073.jpg)
-![](media/15413976595125.jpg)
-![](media/15413977417243.jpg)
+{% asset_img 15413975672068%}
+{% asset_img 15413976114746%}
+{% asset_img 15413976344073%}
+{% asset_img 15413976595125%}
+{% asset_img 15413977417243%}
 
 ### 知识点记录
 
