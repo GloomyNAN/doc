@@ -31,3 +31,21 @@ composer require jcc/taxi:dev-master -vvv
    ] 
 ```
 
+### 更新报错
+
+问题描述：执行`composer  self-update`是报错
+
+```
+Failed to decode response: zlib_decode(): data error
+Retrying with degraded mode, check https://getcomposer.org/doc/articles/troubleshooting.md#degraded-mode for more info
+```
+
+解决办法：
+
+```bash
+# 根据指令更新key
+# key详见地址：https://composer.github.io/pubkeys.html
+composer self-update --update-keys
+```
+
+

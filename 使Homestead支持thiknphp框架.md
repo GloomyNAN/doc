@@ -21,5 +21,5 @@ title: 使Homestead支持thiknphp框架
 
 ## 补充
 
-如暂时不想更新homestead,可以下载[thiknphp配置文](https://gist.github.com/GloomyNAN/9b032f9465b6256de79d50ece1aa810b)件到`/laravel/homestead/scripts`下
+如暂时不想更新homestead,可以下载[thiknphp配置文件](https://gist.github.com/GloomyNAN/9b032f9465b6256de79d50ece1aa810b)到`/laravel/homestead/scripts`下
 
