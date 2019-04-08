@@ -288,3 +288,11 @@ make uninstall
 # emerge -k packagename (自己编译好摆在硬盘上的包)
 
 
+## apt卸载
+
+sudo apt-get remove <package> #-----(package 删除包)。
+sudo apt-get purge <package> # ----(package 删除包，包括删除配置文件等) 　　
+sudo apt-get -y autoremove 卸载不需要的依赖关系。
+sudo apt-get -y autoclean 清理安装软件时留下的缓存程序软件包/只清理过时的包 　　。
+sudo apt-get -y clean 清理下载文件的存档。
+

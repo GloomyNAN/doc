@@ -4,6 +4,9 @@ date: 2017-12-01 16:46:54
 tags:
 ---
 
+清除 hidden spaces
+sudo rm -rf /.DocumentRevisions-V100
+
 [记录装软件](https://7449.github.io/2017/07/04/mac-reloading/)
 杀死dock&launchpad
     
@@ -41,7 +44,19 @@ Ctrl+y 粘贴
 ```
 
 
+
+
 最新版的 Mac 不需要额外的程序了，在 Finder 里按「⌘+shift+.」就能显示隐藏文件，再按一次隐藏掉。╮(￣▽￣")╭
 
 大概是从 macOS Sierra 开始有这个功能的。
+
+## 刷新DNS
+
+
+```
+sudo killall -HUP mDNSResponder;say DNS cache has been flushed
+```
+
+
+[修复mac充电线](https://www.ifixit.com/Guide/MacBook+电源线5针+MagSafe+连接器和电缆更换/21842?lang=zh)
 

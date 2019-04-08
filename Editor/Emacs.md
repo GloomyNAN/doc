@@ -112,3 +112,62 @@ p-previous，n-next，b-backward，f-forward
 
 另外两个使用较多的是C-v 往下翻页，M-v 往上翻页。呃，还有一个C-l 就是把当前行提到页面中间，感觉Emacs对页面中似乎情有独钟啊。
 
+### mac note整理
+
+M-s ： 新建一个buffer（缓冲区） C-x O ： 注意是大写的O，不是零，所以需要按住shift键再按o键。用于在缓冲区之间切换 C-g ： 取消当前操作 C-x u ： 回到上一步，相当于Undo C-x 3 ： 把缓冲区（buffer）分为左右两个，新的一个缓冲区是复制当前的缓冲区 （可以执行多次，来分割出很多小窗口） C-x 2 ： 把缓冲区（buffer）分为上下两个，新的一个缓冲区是复制当前的缓冲区 （可以执行多次，来分割出很多小窗口） M-w ： 选中文字的情况是复制文字，而如果没有选中文字则是复制当前的一行 C-w ： 选中文字的情况是剪切文字，而如果没有选中文字则是剪切当前的一行 M-x ： 调出命令输入，可以在后面接命令，比如man，svn-status，等 C-y ： 黏贴 C-x C-s ： 保存文本 C-x C-f ： 打开文件，如果文件不存在，则新建文件 C-x C-v ： 打开一个文件，取代当前缓冲区 C-x k ： 关闭当前缓冲区（buffer） C-s ： 向前搜索 C-r ： 向后搜索 C-x h ： 全选 C-v ： 向下翻页 M-v ： 向上翻页 C-f ： 前进一个字符 C-b ： 后退一个字符 M-f ： 前进一个单词 M-b ： 后退一个单词 C-@ ： 标记开始区域 C-a ： 移到行首 C-e ： 移到行尾 M-a ： 移到句首 M-e ： 移到句尾 M-< ： 缓冲区头部 M-> ： 缓冲区尾部 M-g M-g，再输入数字 ： 跳转到文本的第几行 C-x 0 ： 关闭当前缓冲区 C-x C-c ： 退出Emacs
+
+
+作者：程序员联盟
+链接：http://www.jianshu.com/p/732157b02ecc
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+Emacs在保存时就会运行write-file-hooks中的time-stamp, 从而加 入修改时间, 结果类似下面所示
+Time-stamp: 
+或者
+Time-stamp: "jerry 12/17/2003 12:00:54 (unidevel.com)"
+   
+要使用中文表示, 可以这样设置
+(setq time-stamp-start "最后更新时间:[     ]+\\\\?")
+(setq time-stamp-end: "\n")
+(setq time-stamp-format: "%:y年%:m月%:d日")
+   
+上面设置了如果碰到"最后更新时间:"的字样, time-stamp就将其后 面的字符替换为当前时间的"XXXX年XX月XX日", 注意, time-stamp-end的结束符 为换行符, 所以"最后更新时间:"行后所有字符都将无条件被替换为"XXXX年XX月XX日" 格式的时间, 本文首页上的更新时间就是这样做出来的
+4.4 我最最讨厌的
+不要打入 TAB 时总是听到 PC 喇叭嘀嘀嘀的叫
+(setq visible-bell t)
+不要总是没完没了的问yes or no, 为什么不能用 y/n
+(fset 'yes-or-no-p 'y-or-n-p)
+为什么不能显示个时间什么的
+(display-time)
+为什么不显示当前所在的行号和列号
+(column-number-mode t)
+为什么不能像Windows下编辑器那样, 高亮显示要拷贝的区域
+(transient-mark-mode t)
+我要显示匹配的括号
+(show-paren-mode t)
+为什么使用语法显示的大文件在移动时如此之慢
+(setq lazy-lock-defer-on-scrolling t)
+(setq font-lock-support-mode 'lazy-lock-mode)
+(setq font-lock-maximum-decoration t)
+   
+不要那个如此大的工具条
+(tool-bar-mode -1)
+   
+在mozilla, openoffice等拷贝的中文文字无法正确粘贴在Emacs中(Emacs 21.3 发布版有此问题, 至少在我的FreeBSD下是这样的)
+(set-clipboard-coding-system 'ctext)
+   
+启动Emacs报错, ~/.emacs中有问题, 如何忽略错误
+ (condition-case err
+     (progn
+     (require 'xxx) )
+   (error
+    (message "Can't load xxx-mode %s" (cdr err))))
+   
+如上所示, 可以截获progn内部出错, 在mini-buffer下打出错误信息
+不要生成临时文件
+(setq-default make-backup-files nil)
+   
+

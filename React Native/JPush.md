@@ -22,3 +22,5 @@ tags:
 >感觉是跑RN 的时候,什么东西导出初始华了俩次
 >删除另一个
 
+[「使用心得」极光推送的设备唯一性标识 RegistrationID](https://community.jiguang.cn/t/registrationid/3810)
+

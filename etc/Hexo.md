@@ -36,7 +36,7 @@ hexo g -d
 
 ## 主题记录
 
-[Next](ttps://github.com/theme-next/hexo-theme-next)
+[Next](https://github.com/theme-next/hexo-theme-next)
 [Maupassant](https://github.com/tufu9441/maupassant-hexo)
 [Even](https://github.com/ahonn/hexo-theme-even)
 
