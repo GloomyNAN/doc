@@ -15,7 +15,7 @@ function git_branch {
 }
 export PS1='\u@\h \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ '
 
-#Homestead
+# Homestead
 function homestead() {
     ( cd ~/WorkArea/VMS/Homestead && vagrant $* )
 }
@@ -24,7 +24,11 @@ function killhomestead() {
      ps -ef|grep VirtualBox|awk '{print  $2}'|xargs kill
 }
 
-#Show Or Hide Hidden Files
+function delbranch(){
+        ( git push origin --delete $1 && git branch -d  $1)
+}
+
+# Show Or Hide Hidden Files
 function show() {
 	defaults write com.apple.finder AppleShowAllFiles TRUE
 	killall Finder
@@ -52,13 +56,10 @@ alias ...="cd ../.."
 alias h='cd ~'
 alias c='clear'
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
-#Work Places
+# Work Places
 alias WWW='cd ~/WorkArea/WWW'
-alias wechat-momotang='cd ~/WorkArea/WWW/momotang/wechat'
-alias admin-momotang='cd ~/WorkArea/WWW/momotang/management'
-alias MojiaAPP='cd ~/WorkArea/WWW/momotang/MojiaAPP'
 
-#Git
+# Git
 alias pull='git pull origin'
 alias merge='git merge'
 alias fetch='git fetch'
@@ -69,6 +70,5 @@ alias commit='git commit -m'
 alias checkout='git checkout'
 alias status='git status'
 alias ll='ls -la'
-
 ```
 

@@ -12,6 +12,7 @@ sudo rm -rf /.DocumentRevisions-V100
     
     defaults write com.apple.dock ResetLaunchPad -bool true;killall Dock
 
+
 任何来源命令
     
     sudo spctl --master-disable

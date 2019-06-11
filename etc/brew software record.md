@@ -21,6 +21,10 @@ carthage - SnaKit依赖
 
 # package manager
 dep //go
+
+# 命令提示工具
+tldr
+
 ```
 cask
 

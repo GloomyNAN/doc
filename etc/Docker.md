@@ -39,7 +39,6 @@ docker images
  # -P:将容器内部使用的网络端口映射到我们使用的主机上。
  # docker run -d -P training/webapp python app.py
  docker run 
-
 ```
 
 
