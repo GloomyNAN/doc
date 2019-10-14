@@ -4,7 +4,7 @@ date: 2018-05-18 15:39:22
 tags:
 ---
 
-##View Style
+## View Style
 
 支持Flexbox、ShadowPropTypesIOS、Transforms属性。
 

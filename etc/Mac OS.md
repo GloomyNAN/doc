@@ -51,8 +51,13 @@ Ctrl+y 粘贴
 
 大概是从 macOS Sierra 开始有这个功能的。
 
-## 刷新DNS
+修改软件默认语言
 
+`defaults write <CFBundleIdentifier> AppleLanguages '("zh-cn")' `
+例如：企业微信报名为com.tencent.WeWorkMac
+
+## 刷新DNS
+[家长接待流程](media/%E5%AE%B6%E9%95%BF%E6%8E%A5%E5%BE%85%E6%B5%81%E7%A8%8B.md)
 
 ```
 sudo killall -HUP mDNSResponder;say DNS cache has been flushed
@@ -60,4 +65,7 @@ sudo killall -HUP mDNSResponder;say DNS cache has been flushed
 
 
 [修复mac充电线](https://www.ifixit.com/Guide/MacBook+电源线5针+MagSafe+连接器和电缆更换/21842?lang=zh)
+
+
+https://www.bilibili.com/video/av42174682/
 

@@ -16,10 +16,9 @@ tags:
 [react-native-art-绘图入门](http://www.jianshu.com/p/8e6544ee647f)
 [React开发指南](https://www.jianshu.com/nb/6453420)
 http://www.jianshu.com/p/ce71b4a8a246
-
 http://blog.csdn.net/jiangbo_phd/article/details/53996112
-
 http://blog.csdn.net/jiejiegua/article/details/54669309
+
 **安装命令**
 
 React Developer Tools
