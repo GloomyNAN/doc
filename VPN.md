@@ -1,4 +1,8 @@
-# VPN
+---
+title: VPN
+date: 
+tags:
+---
 
 本脚本适用环境
 系统支持：CentOS 6+，Debian 7+，Ubuntu 12+

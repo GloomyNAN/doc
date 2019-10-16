@@ -1,4 +1,8 @@
-# mongo
+---
+title:  mongo
+date: 
+tags:
+---
 
 ```bash
 ## 备份
@@ -28,3 +32,4 @@ db.createUser({user:"yql",pwd: "Yqlmongodb",roles: [ { role: "readWrite", db: "y
 /usr/local/mongodb/bin/mongo localhost:27000/yqldb
 db.auth('yql','Yqlmongodb')
 ```
+
