@@ -1,18 +1,23 @@
-# linux学习记录
+---
+title: linux学习记录
+---
 
 ## linux零基础学习
 
 ### 分区
 
+```
 /dev/hda5
 hd标识IDE接口硬盘，sd是SATA硬盘，字母代表第几个设备，阿拉伯数字表示硬盘第几个分区，分区顺序不能改变，1-4主分区或扩展分区，5则是第一个逻辑分区
 filesysyem:linux一般使用ext3，如果想要win和linux都可以访问可以建立fat32
 
 
 现在列举一些ReadLine的键绑定，您可以自行尝试。（运行 man readline 命令，来查看ReadLine手册）
+```
 
 ### 先来了解一些约定：
 
+```
 \C-a 表示 Ctrl+a
 \M-a 表示 Meta+a Meta键在PC中通常为ALT键
 A 表示 Shift+a
@@ -45,6 +50,7 @@ A 表示 Shift+a
 \C-r 连续使用 ``C-r`` 可以查找下一个
 \M-p
 \M-n
+```
 
 #### 补全：
 
