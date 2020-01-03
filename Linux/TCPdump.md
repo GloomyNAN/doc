@@ -16,4 +16,3 @@ tcpdump -i 网卡  -A 以ASCII格式打印出所有分组，并将链路层的�
 
 tcpdump -i eth0 -nnA port 80 host api.xiaoyinka.com
 
-

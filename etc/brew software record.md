@@ -25,6 +25,10 @@ dep //go
 # 命令提示工具
 tldr
 
+# php 
+brew-php-switcher # php版本切换
+
+
 ```
 cask
 
@@ -33,5 +37,4 @@ cask
 - phpstorm
 - ngrok-反向代理
 - vagrant
-
 

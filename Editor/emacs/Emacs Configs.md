@@ -2,7 +2,6 @@
 title:  Emacs Configs
 ---
 
-
 setq 当前buffer
 setq-default 全局buffer值
 
@@ -24,15 +23,28 @@ setq-default 全局buffer值
 (setq auto-save-default nil) ;不生成名为#filename#的临时文件
 (setq x-select-enable-clipboard t) ;支持和外部程序的拷贝
 (global-font-lock-mode t) ;打开语法高亮
-(electirc-indent-mode t) ;;自动缩进
-注释用两个引号
-
-(delete-selection-mode t) ;;delete键
-
+(electirc-indent-mode t) ;;自动缩进 注释用两个引号
 ```
 
+```lisp
+; config
+(delete-selection-mode t) ;;delete键
+ (package-initialize)
 
-![emacs配置](media/15308694159471.jpg)
+(tool-bar-mode -1) ; turn off tool-bar
+(electirc-indent-mode -1) ;
+(scroll-bar-mode -1) ; turn off scroll-bar
+(setq inhibit-splash-screen t) ;turn off splash screen
+(global-linum-mode t)
 
-<!--more-->
+(defun open-my-init-file()
+    (interactive)
+    (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "<f2>") 'open-my-init-file)
+
+(global-company-mode t)
+(setq curcor-tpye 'bar)
+(custom-set-variables)
+```
 

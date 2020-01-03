@@ -2,7 +2,14 @@
 title: Emacs Packages
 ---
 
-#### package-list-packages
+## package-list-packages
+
+```lisp
+(require 'XX)
+(add-to-list 'load-path
+	     "~/emacs/extension"
+	     t)
+```
 
 i-选择安装
 u-取消选择

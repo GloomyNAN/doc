@@ -5,6 +5,7 @@ tags: [emacs,org]
 ---
 
 [Org入门](https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html#sec-4-4)
+[ErgoEmacs](http://ergoemacs.org/)
 
 ```
 M-RET 插入同级列表
@@ -40,12 +41,11 @@ C-c /	只列出包含搜索结果的大纲，并高亮，支持多种搜索方�
 C-c ' 打开buffer(emacs lisp)/返回
 C-c C-k退出
 
-![org-mode语法g高亮配置](media/15308701320798.jpg)
-
-
-
-
 ```lisp
+; org-mode语法高亮配置
+(require 'org)
+(setq org-src-fontify-natively t)
+
 <+s+tab = ;;插入源代码
 #+BEGIN_SRC
 #+END_SRC
@@ -72,19 +72,21 @@ C-c C-s ;; 设定开始时间
 C-c C-d;;设定结束时间
 C-c a +a ;;列表
 d回到当前
+
+; 文学编程
+(require 'org-install)
+(require 'ob-tangle)
+(org-babel-load-file (expand-file-name "XXXX" user-enamcs-directory))
+
+; 记笔记
+(setq org-capture-templates
+    '(("t" "Todo" entry (fileheadline "~/.emacs.d/gtd.org" "工作安排")
+    "* TODO [#B] %?\n %i\n"
+    :empty-lines 1)
+    ("c" "Chrome" entry (fileheadline "~/.emacs.d/notes.org" "Quick notes")
+      "* TODO [#C] %?\n %(XXX/retrieve-chrome-current-tab-url)\n %i\n %U"
+      :empty-lines 1)
+      ))
+)
 ```
-
-## 文学编程
-
-![](media/15311208887757.jpg)
-
-## 记笔记
-
-![](media/15311233396322.jpg)
-
-
-番茄工作法插件
-org-pomodoro
-
-ergoemacs.org沙哥？
 
