@@ -6,9 +6,6 @@ categories: [emacs,lisp]
 comments: true
 ---
 
-[Emacs Lisp 简明教程](http://smacs.github.io/elisp/)
-[Emacs China](https://emacs-china.org)
-
 ## 函数和变量
 
 ```lisp

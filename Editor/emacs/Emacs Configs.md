@@ -17,25 +17,17 @@ setq-default 全局buffer值
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 (setq frame-title-format "%b %I") ;显示文件名和大小
-
 (auto-image-file-mode t) ;让Emacs可以直接打开、显示图片
 (fset 'yes-or-no-p 'y-or-n-p) ;以Y/N代表yes/no
 (setq auto-save-default nil) ;不生成名为#filename#的临时文件
 (setq x-select-enable-clipboard t) ;支持和外部程序的拷贝
-(global-font-lock-mode t) ;打开语法高亮
-(electirc-indent-mode t) ;;自动缩进 注释用两个引号
 ```
 
 ```lisp
 ; config
-(delete-selection-mode t) ;;delete键
  (package-initialize)
 
-(tool-bar-mode -1) ; turn off tool-bar
-(electirc-indent-mode -1) ;
-(scroll-bar-mode -1) ; turn off scroll-bar
 (setq inhibit-splash-screen t) ;turn off splash screen
-(global-linum-mode t)
 
 (defun open-my-init-file()
     (interactive)
@@ -43,7 +35,6 @@ setq-default 全局buffer值
 
 (global-set-key (kbd "<f2>") 'open-my-init-file)
 
-(global-company-mode t)
 (setq curcor-tpye 'bar)
 (custom-set-variables)
 ```

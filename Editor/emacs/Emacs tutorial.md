@@ -123,9 +123,7 @@ Emacs will complete the name**
 
 C-x C-c offers to save each changed file before it kills Emacs.
 C-z is the command to exit Emacs *temporarily*
-
 auto-save
-
 M-x recover-file <Return>
 
 ## mode

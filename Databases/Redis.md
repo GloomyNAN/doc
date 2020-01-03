@@ -4,21 +4,13 @@ date: 2018-06-19 14:26:49
 tags:
 ---
 
-**数据类型**
+```bash
+# 启动服务：
+redis-server /usr/local/redis/etc/redis.conf
 
-
-启动服务：
-
-    redis-server /usr/local/redis/etc/redis.conf
-
-
-查看
-
-```
+# 查看
 pid:sudo cat /usr/local/redis/redis.pid
 ```
-
-命令记录
 
 **String类型**
 

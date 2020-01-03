@@ -4,7 +4,7 @@ date: 2018-06-19 14:26:49
 tags:
 ---
 
-```mongodb
+```bash
 mongod --dbpath=../db --logpath=../log/mongod.log --part=27017（默认）
 mongod --config D:/MongoDB/conf/mongo.conf
 configsvr 貌似是用默认配置启动
@@ -33,7 +33,7 @@ db.mytable.drop();
 <!--more-->
 
 配置文件
-    
+
     mongod --config /usr/local/etc/mongod.conf
     sc create MongoDB binPath= "D\MongoDB2.6.6\bin\mongod.exe --config=D: \MongoDB2.6.6\mongod.cfg --service" displayname= "MongoDB 2.6 Standard Server" start= auto 
     D:\MongoDB2.6.6\bin\mongod.exe --config D:\MongoDB2.6.6\mongod.cfg --install 

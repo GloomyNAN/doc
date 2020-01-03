@@ -8,7 +8,6 @@ https://www.awaimai.com/2203.html
    原来在ubuntu和freebsd下都没有这个问题。在Gentoo中就有点问题。今天解决了一下，在gentoo-user的mail list中找到了答案。
 正常的情况应该是这样的：
 
-
 ```
 rory@gentoo ~ $ ssh xxx.xxx.com
 The authenticity of host 'xxx.xxx.com (218.xxx.xxx.xxx)' can't be established.

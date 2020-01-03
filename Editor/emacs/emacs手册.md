@@ -166,8 +166,6 @@ M-; 注释
 
 键盘快速选中字符串
 C-=/-
-
-
 C-w
 command-log
 pallet + cask管理插件包

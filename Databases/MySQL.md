@@ -53,19 +53,19 @@ ORDER BY prod_name;
 {% asset_img 15414007036747%}
 {% asset_img 15414007281160%}
 
-### 第十一章 使用函数处理
+## 第十一章 使用函数处理
 
 {% asset_img 15414007844350%}
 {% asset_img 15414007947442%}
 {% asset_img 15414008268263%}
 
-### 第十二章 聚合函数
+## 第十二章 聚合函数
 
 {% asset_img 15414008426028%}
 
 
 
-### 第十五章 联结表
+## 第十五章 联结表
 
 inner join
 内连接，等值链接，默认方式
@@ -73,7 +73,7 @@ inner join
 left /right out join 外链接
 
 
-### 第十七章组合查询
+## 第十七章组合查询
 
 多个where和单独操作时间相同，多个where条件语句相当于字句都是一个select语句一个组合查询；
 
@@ -92,7 +92,7 @@ FROM products
 WHERE vend_id IN (1001,1002);
 ```
 
-### 第十八章 理解全文本搜索
+## 第十八章 理解全文本搜索
 
 mysiam支持全文搜索，innodb不支持；
 
@@ -146,7 +146,7 @@ WHERE Match(note_text) Against('heavy' IN BOOLEAN MODE);
 {% asset_img 15414012083129.jpg%}
 
 
-### 第十九章 插入数据
+## 第十九章 插入数据
 
 >总是使用列的列表 一般不要使用没有明确给出列的列表的INSERT 语句。使用列的列表能使SQL代码继续发挥作用，即使表结构发生了变化。
 

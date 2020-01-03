@@ -24,7 +24,6 @@ title: Emacs Plugins
 * getopts/getopt
 * company
 * monikai-theme
-* hungry-delete
 * swiper
 * counsel
 * smartparens
@@ -37,6 +36,7 @@ title: Emacs Plugins
 * evil-nerd-commenter vi快捷键
 * which-key 快捷键提示插件
 * org-pomodoro-番茄工作法插件
+* lisp  开发环境Sbcl
 
 ## js2-mode
 
@@ -112,10 +112,6 @@ title: Emacs Plugins
 ```
 imenu 类似代码方法树状图，函数快捷跳转
 
-![](media/15311227490900.jpg)
-正则表达式查找代码
-
-
 ## dired mode
 
 ```lisp
@@ -137,14 +133,15 @@ R: rename files
 
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-
 ```
 
 ## company
 
 ```lisp
 ; 统一用户体验
-(with-eval-after-loda 'company
+(global-company-mode t)
+
+(with-eval-after-load 'company
                       (define-key company-active-map (kdb "M-n") nil)
                       (define-key company-active-map (kdb "M-p") nil)
                       (define-key company-active-map (kdb "C-n") #'company-select-next)
