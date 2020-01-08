@@ -196,22 +196,22 @@ Type M-x to get into a minibuffer; then type <ESC> <ESC> <ESC> to  get out.
 
 
 To use the Help features
-C-h character 
+`C-h character `
 
 (If C-h does not display a message about help at the bottom of the
 screen, try typing the F1 key or M-x help <Return> instead.)
 
 hen Emacs displays a very brief description of the command.
-C-h c C-p
+`C-h c C-p`
 
 This displays the documentation of the function
-C-h k C-p 
+`C-h k C-p`
 
-  C-h f        Describe a function.  You type in the name of the function.
+`C-h f`        Describe a function.  You type in the name of the function.
 
 C-h v displays the documentation of variables
 
-C-h a  
+`C-h a`
 Command Apropos.  Type in a keyword and Emacs will list
                 all the commands whose names contain that keyword.
                 These commands can all be invoked with META-x.

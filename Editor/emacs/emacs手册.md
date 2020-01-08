@@ -134,41 +134,4 @@ Delete all but one of many consecutive blank lines (delete-blank-lines).
   
 ## Important Text-Changing Commands
 
-### Mark
-
-参数 C-u = M-
-
-
-
-
-## 杂项
-
-Ctrl+r
-bing命令
-M-x eval-buffer 状态机生效
-函数 nodejs-repl-send-buffer代码发动到buffer运行
-缩写+全称
-lisp无namespace,vars全局可见
-**魔法注释**
-`;;;###autoload`
-`;;插件名-autoloads.el`是自动生成的，遍历插件陌路所有文件的魔法注释生成
-
-load-file 和 require
-x 执行
-C-x C-z 打开当前文件所在buffer
-C-c 复制
-open finder on Mac
-Packages
-reveal-in-osx-finder
-
-M-; 注释
-## expand-region
-
-键盘快速选中字符串
-C-=/-
-C-w
-command-log
-pallet + cask管理插件包
-macro  宏
-use-package
 

@@ -4,7 +4,7 @@ title: Emacs Plugins
 
 ## Plugins List
 
-* semx      提升M-x的使用,ctrl-s切换
+* semx   提升M-x的使用,ctrl-s切换
 * hungry delete -delete删除多个空格
 * swiper+consel         Ctrl-S弹出mini buffer选择
 * smartparens       自动补全括号
@@ -37,6 +37,7 @@ title: Emacs Plugins
 * which-key 快捷键提示插件
 * org-pomodoro-番茄工作法插件
 * lisp  开发环境Sbcl
+* irc -聊天
 
 ## js2-mode
 
@@ -147,5 +148,4 @@ R: rename files
                       (define-key company-active-map (kdb "C-n") #'company-select-next)
                       (define-key company-active-map (kdb "C-p")#'company-select-previous))                  
 ```
-
 

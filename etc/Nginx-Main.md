@@ -5,6 +5,7 @@ tags:
 ---
 
 ##常用命令
+    
     nginx -s [stop|quit|reopen|reload]
     ps -ef|grep nginx //查看主进程号
 
