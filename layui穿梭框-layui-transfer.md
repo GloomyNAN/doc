@@ -8,7 +8,6 @@ title: layui穿梭框-layui-transfer plus
 
 ![穿梭框plus](/images/3.png)
 
-
 ### 框架要求
 
 layui >=2.2.6

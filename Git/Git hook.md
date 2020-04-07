@@ -97,3 +97,6 @@ tags: [git,git hook]
 
 [Git-使用强制策略的一个例子](https://git-scm.com/book/zh/v2/自定义-Git-使用强制策略的一个例子#r_an_example_git_enforced_policy)
 
+[使用Github的webhooks进行网站自动化部署](https://aotu.io/notes/2016/01/07/auto-deploy-website-by-webhooks-of-github/index.html)
+
+
