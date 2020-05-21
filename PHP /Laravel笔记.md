@@ -52,9 +52,11 @@ composer更新自动加载
 
     composer dump-autoload
 
+
 > 问题描述：
 > 查询数据不能save();因为主键为ID，我 设置成了id
 > isDirty getDirty
+
 
 ##  查询构造器
 
@@ -78,6 +80,7 @@ DB::table('as_admin')->insertGetId(array('name' => jason,'age' => 18));
 ```
 DB::table('as_admin')->insert(array(array('name' => jason,'age' => 18),array('name' => jason2,'age' => 18))); 
 ```
+
 
 ###使用查询构造器更新数据
 
@@ -245,4 +248,26 @@ class StudentController extends Controller{
 }
 ?>
 ```
+
+## 视频课程记录
+
+```
+// 新增
+$bool = DB::insert（'insert into student(name,age) values(?,?) ['imooc',19]'）
+var_dump($bool);
+
+// 更新
+$num = DB::update('update student set age = ? where name = ?',[20,'sean]);
+var_dump($num);
+
+// 查询 
+$students = DB::select('select * from student where id > ?',[1001]);
+dd（$students）;
+
+// 删除
+$bool = DB::delete('delete from student where id >?',[1001]);
+dd($bool)
+```
+
+
 
