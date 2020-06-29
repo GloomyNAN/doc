@@ -3,7 +3,14 @@ title: brew software record
 ---
 
 
-```
+```bash
+
+# uninstall
+brew tap beeftornado/rmtree
+
+brew rmtree git
+brew cleanup
+
 # Editor
 goland phpstorm emacs android-studio 
 
