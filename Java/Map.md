@@ -1,4 +1,28 @@
-# day04 【Map】
+---
+title: Map
+date: 2020-06-03 16:56:28
+---
+
+```java
+/*
+    java.util.Map<k,v>集合
+    Map集合的特点:
+        1.Map集合是一个双列集合,一个元素包含两个值(一个key,一个value)
+        2.Map集合中的元素,key和value的数据类型可以相同,也可以不同
+        3.Map集合中的元素,key是不允许重复的,value是可以重复的
+        4.Map集合中的元素,key和value是一一对应
+    java.util.HashMap<k,v>集合 implements Map<k,v>接口
+    HashMap集合的特点:
+        1.HashMap集合底层是哈希表:查询的速度特别的快
+            JDK1.8之前:数组+单向链表
+            JDK1.8之后:数组+单向链表|红黑树(链表的长度超过8):提高查询的速度
+        2.hashMap集合是一个无序的集合,存储元素和取出元素的顺序有可能不一致
+   java.util.LinkedHashMap<k,v>集合 extends HashMap<k,v>集合
+   LinkedHashMap的特点:
+        1.LinkedHashMap集合底层是哈希表+链表(保证迭代的顺序)
+        2.LinkedHashMap集合是一个有序的集合,存储元素和取出元素的顺序是一致的
+ */
+```
 
 # 第一章 Map集合
 
@@ -369,7 +393,7 @@ public class HelloJDK9 {
 
 1. 在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序 	
 
-      ![](img/debug1.png)
+      ![](Map/debug1.png)
 
 2. 点击Debug运行模式       ![](img\debug2.png)                                                                                                                                                                      
 

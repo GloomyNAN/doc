@@ -1,4 +1,7 @@
-# day08【File类、递归】
+---
+title: File类、递归
+date: 2020-06-03 11:55:25
+---
 
 # 第一章 File类
 
@@ -8,12 +11,12 @@
 
 ## 1.2 构造方法
 
-* `public File(String pathname) ` ：通过将给定的**路径名字符串**转换为抽象路径名来创建新的 File实例。  
-* `public File(String parent, String child) ` ：从**父路径名字符串和子路径名字符串**创建新的 File实例。
-* `public File(File parent, String child)` ：从**父抽象路径名和子路径名字符串**创建新的 File实例。  
+- `public File(String pathname) ` ：通过将给定的**路径名字符串**转换为抽象路径名来创建新的 File实例。  
+- `public File(String parent, String child) ` ：从**父路径名字符串和子路径名字符串**创建新的 File实例。
+- `public File(File parent, String child)` ：从**父抽象路径名和子路径名字符串**创建新的 File实例。  
 
 
-* 构造举例，代码如下：
+- 构造举例，代码如下：
 
 ```java
 // 文件路径名
@@ -44,13 +47,13 @@ File file4 = new File(parentDir, child);
 
 ### 获取功能的方法
 
-* `public String getAbsolutePath() ` ：返回此File的绝对路径名字符串。
+- `public String getAbsolutePath() ` ：返回此File的绝对路径名字符串。
 
-* ` public String getPath() ` ：将此File转换为路径名字符串。 
+- ` public String getPath() ` ：将此File转换为路径名字符串。 
 
-* `public String getName()`  ：返回由此File表示的文件或目录的名称。  
+- `public String getName()`  ：返回由此File表示的文件或目录的名称。  
 
-* `public long length()`  ：返回由此File表示的文件的长度。 
+- `public long length()`  ：返回由此File表示的文件的长度。 
 
   方法演示，代码如下：
 
@@ -86,8 +89,8 @@ File file4 = new File(parentDir, child);
 
 ### 绝对路径和相对路径
 
-* **绝对路径**：从盘符开始的路径，这是一个完整的路径。
-* **相对路径**：相对于项目目录的路径，这是一个便捷的路径，开发中经常使用。
+- **绝对路径**：从盘符开始的路径，这是一个完整的路径。
+- **相对路径**：相对于项目目录的路径，这是一个便捷的路径，开发中经常使用。
 
 ```java
 public class FilePath {
@@ -179,10 +182,10 @@ public class FileCreateDelete {
 
 ## 1.4 目录的遍历
 
-* `public String[] list()` ：返回一个String数组，表示该File目录中的所有子文件或目录。
+- `public String[] list()` ：返回一个String数组，表示该File目录中的所有子文件或目录。
 
 
-* `public File[] listFiles()` ：返回一个File数组，表示该File目录中的所有的子文件或目录。  
+- `public File[] listFiles()` ：返回一个File数组，表示该File目录中的所有的子文件或目录。  
 
 ```java
 public class FileFor {
@@ -211,14 +214,14 @@ public class FileFor {
 
 ## 2.1 概述
 
-* **递归**：指在当前方法内调用自己的这种现象。
+- **递归**：指在当前方法内调用自己的这种现象。
 
-* **递归的分类:**
+- **递归的分类:**
   - 递归分为两种，直接递归和间接递归。
   - 直接递归称为方法自身调用自己。
   - 间接递归可以A方法调用B方法，B方法调用C方法，C方法调用A方法。
 
-* **注意事项**：
+- **注意事项**：
   - 递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。
   - 在递归中虽然有限定条件，但是递归次数不能太多。否则也会发生栈内存溢出。
   - 构造方法,禁止递归
@@ -231,8 +234,8 @@ public class Demo01DiGui {
 	}
 	
 	/*
-	 * 3.构造方法,禁止递归
-	 * 编译报错:构造方法是创建对象使用的,不能让对象一直创建下去
+	 - 3.构造方法,禁止递归
+	 - 编译报错:构造方法是创建对象使用的,不能让对象一直创建下去
 	 */
 	public Demo01DiGui() {
 		//Demo01DiGui();
@@ -240,9 +243,9 @@ public class Demo01DiGui {
 
 
 	/*
-	 * 2.在递归中虽然有限定条件，但是递归次数不能太多。否则也会发生栈内存溢出。
-	 * 4993
-	 * 	Exception in thread "main" java.lang.StackOverflowError
+	 - 2.在递归中虽然有限定条件，但是递归次数不能太多。否则也会发生栈内存溢出。
+	 - 4993
+	 - 	Exception in thread "main" java.lang.StackOverflowError
 	 */
 	private static void b(int i) {
 		System.out.println(i);
@@ -254,8 +257,8 @@ public class Demo01DiGui {
 	}
 
 	/*
-	 * 1.递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。 Exception in thread "main"
-	 * java.lang.StackOverflowError
+	 - 1.递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。 Exception in thread "main"
+	 - java.lang.StackOverflowError
 	 */
 	private static void a() {
 		System.out.println("a方法");
@@ -289,7 +292,7 @@ public class DiGuiDemo {
   	  返回值类型: int 
   	*/
 	public static int getSum(int num) {
-      	/* 
+      	/- 
       	   num为1时,方法返回1,
       	   相当于是方法的出口,num总有是1的情况
       	*/
@@ -313,16 +316,16 @@ public class DiGuiDemo {
 
 ## 2.3 递归求阶乘
 
-* **阶乘**：所有小于及等于该数的正整数的积。
+- **阶乘**：所有小于及等于该数的正整数的积。
 
 ```java
-n的阶乘：n! = n * (n-1) *...* 3 * 2 * 1 
+n的阶乘：n! = n - (n-1) *...- 3 - 2 - 1 
 ```
 
 **分析**：这与累和类似,只不过换成了乘法运算，学员可以自己练习，需要注意阶乘值符合int类型的范围。
 
 ```
-推理得出：n! = n * (n-1)!
+推理得出：n! = n - (n-1)!
 ```
 
 **代码实现**：
@@ -351,7 +354,7 @@ public class DiGuiDemo {
       	  n不为1时,方法返回 n! = n*(n-1)!
           递归调用getValue方法
       	*/
-        return n * getValue(n - 1);
+        return n - getValue(n - 1);
     }
 }
 ```

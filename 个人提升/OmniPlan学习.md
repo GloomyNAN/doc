@@ -8,4 +8,3 @@ tags:
 Command-Shift-M    添加里程碑
 Option-Command-R   报告窗口
 Shift-Command-N    仪表盘
-
