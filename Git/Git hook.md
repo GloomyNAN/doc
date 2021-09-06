@@ -100,3 +100,17 @@ tags: [git,git hook]
 [使用Github的webhooks进行网站自动化部署](https://aotu.io/notes/2016/01/07/auto-deploy-website-by-webhooks-of-github/index.html)
 
 
+https://aotu.io/notes/2016/01/07/auto-deploy-website-by-webhooks-of-github/index.html
+
+https://mp.weixin.qq.com/s?__biz=MzA4MjkxMzMyNg==&mid=2654068952&idx=1&sn=1bd63a71610d73fcd563888d6f93398d&scene=24&srcid=0804843QrwLCsKWGYxfPum2H#wechat_redirect
+
+
+
+
+git submodule
+
+https://shields.io/category/build
+https://segmentfault.com/a/1190000003076028
+https://segmentfault.com/a/1190000009928515
+https://www.git-scm.com/docs/gitmodules
+https://www.git-scm.com/book/en/v2/Git-Tools-Submodules

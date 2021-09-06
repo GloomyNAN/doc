@@ -30,7 +30,7 @@ https://yarnpkg.com/blog/2017/07/11/lets-dev-a-package-manager/
 
 [DX-ball2 online](http://dx-ball.ru/)
 
-https://blog.csdn.net/simplexingfupeng/article/details/80541301
+Look And Say https://blog.csdn.net/simplexingfupeng/article/details/80541301
 
 ab测试
 ab -c 100 -n 1000 http://www.baidu.com.com/
@@ -45,11 +45,7 @@ php7.3特性 gc算法的优化 hrtime heredoc
 
 https://www.jianshu.com/p/3a3db0359bc7
 
----
-title: 插件记录
-date: 
-tags:
----
+
 
 [layui treeselect](https://wujiawei0926.gitee.io/treeselect/)
 [DevOps究竟是什么](http://www.cnblogs.com/beef/p/7743594.html)
