@@ -47,8 +47,5 @@ DB_PASSWORD=secret
 [laravle-homestead](https://docs.golaravel.com/docs/5.0/homestead/)
 [virtualBox](https://www.virtualbox.org/)
 
-
-
 [vagrant 添加本地 box 安装 laravel homestead](https://zhuanlan.zhihu.com/p/25338468)
 [Homestead包升级](https://segmentfault.com/a/1190000011781490)
-

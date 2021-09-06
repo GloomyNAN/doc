@@ -439,7 +439,6 @@ public class Demo01Multi {
 子类类型 变量名 = (子类类型)父类变量名；
 如：Cat c = (Cat) a;
 
-
 ps:instanceof校验
 
 
@@ -470,4 +469,3 @@ java.lang包下的所有类无需导入
 |java.lang.String|字符串|
 |java.tuil.Arrays|数组|
 |java.lang.Math|数学|
-

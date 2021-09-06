@@ -6,6 +6,7 @@ tags: [emacs,org]
 
 [Org入门](https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html#sec-4-4)
 [ErgoEmacs](http://ergoemacs.org/)
+http://ergoemacs.org/emacs/emacs.html
 
 ```
 M-RET 插入同级列表
