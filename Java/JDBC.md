@@ -126,7 +126,7 @@ try {
 }
 
 4. ResultSet：结果集对象,封装查询结果
-* `boolean next()`: 游标向下移动一行，判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true
+<!-- * `boolean next()`: 游标向下移动一行，判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true -->
 * getXxx(参数):获取数据
 * Xxx：代表数据类型   如： int getInt() ,String getString()
 * 参数：
