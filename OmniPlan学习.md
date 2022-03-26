@@ -20,5 +20,3 @@ https://support.omnigroup.com/omniplan-change-language/
 omnigraffle:///change-preference?AppleLanguages=(zh-Hans)
 
 https://support.omnigroup.com/documentation/omnigraffle/mac/6.3/zh/
-
-
